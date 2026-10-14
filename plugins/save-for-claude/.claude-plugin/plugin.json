@@ -1,7 +1,7 @@
 {
   "name": "save-for-claude",
   "description": "给 Claude Code 订阅省额度：Claude 只做思考、讨论、判断和评审，体力活派给本机已登录的 Codex、Grok 等 CLI。",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": {
     "name": "zheyong"
   },

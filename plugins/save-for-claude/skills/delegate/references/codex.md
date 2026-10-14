@@ -14,7 +14,7 @@ codex login status < /dev/null
 ## 调用
 
 ```bash
-codex exec -C <repo> -s workspace-write --json -o /tmp/save-for-claude/<任务名>/result.md - \
+codex exec -C <repo> -s workspace-write -o /tmp/save-for-claude/<任务名>/result.md - \
   < /tmp/save-for-claude/<任务名>/brief.md > /tmp/save-for-claude/<任务名>/run.log 2>&1
 ```
 
@@ -22,17 +22,14 @@ codex exec -C <repo> -s workspace-write --json -o /tmp/save-for-claude/<任务�
 - `-o`：把最终回复写入文件，评审时只读这个文件，不读完整日志。
 - 模型与思考强度按偏好文件传入：`-m <模型>`、`-c model_reasoning_effort=<low|medium|high>`。偏好写明“使用 Codex 默认配置”时省略这两个参数，沿用 `~/.codex/config.toml`。
 - 不在 git 仓库里运行时加 `--skip-git-repo-check`。
-- `--json`：`run.log` 是事件流，第一行 `thread.started` 的 `thread_id` 是会话 id，每轮结束的 `turn.completed` 带 token 用量。评审时不读这个文件。
-- 完成后记录用量：`python3 <skill 目录>/scripts/savings.py record codex <任务名> /tmp/save-for-claude/<任务名>/run.log`
+- 会话 id 在 `run.log` 开头的 `session id:` 行。
 
 ## 返工
 
 ```bash
-codex exec resume <session id> --json -o /tmp/save-for-claude/<任务名>/result-2.md - \
+codex exec resume <session id> -o /tmp/save-for-claude/<任务名>/result-2.md - \
   < /tmp/save-for-claude/<任务名>/fix.md > /tmp/save-for-claude/<任务名>/run-2.log 2>&1
 ```
-
-返工完成后同样用 `savings.py record codex` 记录 `run-2.log`。
 
 ## 评审
 
