@@ -1,0 +1,18 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "save-for-claude",
+  "description": "给 Claude Code 订阅省额度：一个 Pro 账号也够用。",
+  "owner": {
+    "name": "zheyong"
+  },
+  "plugins": [
+    {
+      "name": "save-for-claude",
+      "source": "./plugins/save-for-claude",
+      "description": "Claude 只做思考、讨论、判断和评审，编码执行、调研等体力活派给本机已登录的 Codex、Grok 等 CLI，让 Pro 订阅的额度用得更久。",
+      "version": "0.1.0",
+      "category": "productivity",
+      "tags": ["claude-pro", "token-saving", "usage", "codex", "grok", "delegate"]
+    }
+  ]
+}
