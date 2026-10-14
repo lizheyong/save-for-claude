@@ -35,6 +35,7 @@ grok --cwd <repo> --permission-mode plan --prompt-file <brief.md> --output-forma
   python3 -c "import json,sys;d=json.load(open(sys.argv[1]));print(d['text']);print('session',d['sessionId'],'cost',d['total_cost_usd'])" <result.json>
   ```
 
+- 完成后记录用量：`python3 <skill 目录>/scripts/savings.py record grok <任务名> <result.json>`；续派的结果文件同样记录。
 - `--max-turns <N>` 限制回合数，防止长时间发散。
 - 模型按偏好文件传入 `-m <模型>`，未指定时沿用 Grok 默认配置；可选值见 `grok models`。
 
